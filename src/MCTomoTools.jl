@@ -1,5 +1,14 @@
+"""
+# MCTomoTools
+
+Package for dealing with MCTomo runs.
+"""
 module MCTomoTools
 
-# Write your package code here.
+include("Grids.jl")
+import .Grids
+
+include("InputOutput.jl")
+import .InputOutput
 
 end
