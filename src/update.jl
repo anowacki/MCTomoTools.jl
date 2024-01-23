@@ -81,8 +81,8 @@ end
 
 function _update_surface_noise!(m, s)
     i = Int(s.vindex)
-    m.surface_noise0[i] = s.noise0
-    m.surface_noise1[i] = s.noise1
+    m.surfacewave_noise0[i] = s.noise0
+    m.surfacewave_noise1[i] = s.noise1
     nothing
 end
 
