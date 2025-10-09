@@ -58,6 +58,22 @@ function sample_chain!(func, model::Model, steps::AbstractVector{<:RawSample};
 end
 
 """
+    sample_chains(func, chains::AbstractArray{<:Chain}; burnin=0, thin=1000)
+
+For multiple chains, sample every `thin`th model in each chain of proposals
+by running `func` on the sample, optionally discarding the first `burnin`
+accepted proposals.
+
+`func(sample)` is a function taking a single argument, `sample`, which is
+a named tuple `(model, isample)`. `model` is the `Model` at each
+(thinned) step, while `isample::Int` is the index of the sample within that chain,
+accounting for burn-in and thinning.
+"""
+function sample_chains(func, chains::AbstractArray{<:Chain}; burnin=0, thin=1000)
+    sum(sample_chain(func, chain; burnin, thin) for chain in chains)
+end
+
+"""
     sample_grid!(grid::Grid, chain::Chain, property::Symbol; kwargs...) -> grids::Vector{Grid}
 
 For a `chain` of steps, perturb the initial model by all the accepted proposals
