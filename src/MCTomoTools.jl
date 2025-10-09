@@ -30,6 +30,7 @@ export
 
     # Plotting
     plot_section,
+    plot_section_makie,
 
     # Helper module functions
     # Accessors
@@ -80,6 +81,11 @@ import .InputOutput
 
 include("Plot.jl")
 import .Plot
+
+#=
+    Package extension stubs
+=#
+include("makie.jl")
 
 # For reexport
 using .InputOutput:
