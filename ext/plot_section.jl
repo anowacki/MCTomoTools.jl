@@ -21,11 +21,11 @@ function MCTomoTools.plot_section_makie(
     slice_dim = findfirst(!isnothing, (x, y, z))
     slice_name = (:x, :y, :z)[slice_dim]
     slice = if slice_name === :x
-        Grid(x:1:x, grid.y, grid.z)
+        Grid(float(x):x, grid.y, grid.z)
     elseif slice_name === :y
-        Grid(grid.x, y:1:y, grid.z)
+        Grid(grid.x, float(y):y, grid.z)
     else
-        Grid(grid.x, grid.y, z:1:z)
+        Grid(grid.x, grid.y, float(z):z)
     end
 
     # Now calculate mean and stdev grid
