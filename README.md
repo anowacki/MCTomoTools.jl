@@ -186,6 +186,39 @@ julia> mean_nnodes = let sum_nnodes = 0
        end
 ```
 
+### Multiple `Chain`s
+Usually you will have run multiple chains.  To read all of them, you
+can `map` or broadcast over all of the chain indices you want to use.
+For example, to read all 20 chains of a run, you would do:
+
+```julia
+julia> chains = map(i -> Chain(settings, i), 1:20)
+20-element Vector{Chain{Float64, Vector{MCTomoTools.RawSample}}}:
+ …
+```
+
+`chains` is a `Vector{Chain}`, and because you are likely to want to
+create an ensemble from all chains (or at least several), you can
+call `sample_chains`
+
+### Plotting with Makie
+If you have loaded a [Makie](https://docs.makie.org/stable/)
+[backend](https://docs.makie.org/stable/explanations/backends/backends)
+(e.g., by doing `using GLMakie`), then you are able to plot certain
+things:
+
+- Plot the value of a `Chain` as a function of sample number, in this case
+  the misfit for all chains:
+  ```julia
+  julia> using GLMakie
+
+  julia> plot(chains, :misfit)
+  ```
+- Plot cross-sections through sampled grids, specifying the direction (here `z`)
+  to which the section is normal:
+  ```julia
+  julia> plot_section_makie(chains, grid, :vp; z=-1, burnin=200_000, thin=1000)
+  ```
 
 ## Relationship to MCTomo
 
