@@ -72,10 +72,7 @@ Grid(x0, x1, nx, y0, y1, ny, z0, z1, nz) =
 Create a new empty `Grid` by giving the coordinate ranges `x`, `y`
 and `z`, optionally specifying the grid storage type `T`.
 """
-function Grid(T, x::AbstractVector, y::AbstractVector, z::AbstractVector)
-    x = map(T, x)
-    y = map(T, y)
-    z = map(T, z)
+function Grid(::Type{T}, x::AbstractVector, y::AbstractVector, z::AbstractVector) where T
     Grid(x, y, z, Array{T}(undef, length(x), length(y), length(z)))
 end
 Grid(x, y, z) = Grid(Float64, x, y, z)
