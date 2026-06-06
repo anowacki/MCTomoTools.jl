@@ -73,7 +73,7 @@ Create a new empty `Grid` by giving the coordinate ranges `x`, `y`
 and `z`, optionally specifying the grid storage type `T`.
 """
 function Grid(::Type{T}, x::AbstractVector, y::AbstractVector, z::AbstractVector) where T
-    Grid(x, y, z, Array{T}(undef, length(x), length(y), length(z)))
+    Grid(promote(x, y, z)..., Array{T}(undef, length(x), length(y), length(z)))
 end
 Grid(x, y, z) = Grid(Float64, x, y, z)
 
