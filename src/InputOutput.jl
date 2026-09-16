@@ -11,7 +11,7 @@ import Tables
 using StaticArrays: SVector
 
 using ..Grids
-using ..MCTomoTools: Chain, Model, Nodes, RawSample, RAW_SAMPLE_LEN_BYTES
+using ..MCTomoTools: MCTomoTools, Chain, Model, Nodes, RawSample, RAW_SAMPLE_LEN_BYTES
 using ..NameLists: read_namelist
 using ..Settings: MCTomoSettings, getpath
 
@@ -50,7 +50,7 @@ Vector{MCTomoTools.RawSample}:
  steps: 2308000
 ```
 """
-Chain(settings::MCTomoSettings, chain_index::Integer) =
+MCTomoTools.Chain(settings::MCTomoSettings, chain_index::Integer) =
     Chain(Model(settings, chain_index), read_raw_samples(settings, chain_index))
 
 """
