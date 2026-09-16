@@ -1,7 +1,7 @@
 name = "MCTomoTools"
 uuid = "a10a1d99-6c8e-46ab-abf9-d2cef7d74344"
-authors = ["Andy Nowacki <a.nowacki@leeds.ac.uk> and contributors"]
 version = "0.1.0"
+authors = ["Andy Nowacki <a.nowacki@leeds.ac.uk> and contributors"]
 
 [deps]
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
@@ -21,7 +21,7 @@ Makie = "ee78f7c6-11fb-53f2-987a-cfe4a2b5a57a"
 MCTomoToolsMakieExt = "Makie"
 
 [compat]
-CSV = "0.10"
+CSV = "0.10, 1"
 Glob = "1"
 Makie = "0.21, 0.22, 0.23, 0.24"
 NearestNeighbors = "0.4"
